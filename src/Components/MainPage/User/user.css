@@ -1,0 +1,111 @@
+.user {
+    background-color: var(--cards);
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--borders);
+    text-align: center;
+}
+
+.user-avatar {
+    margin: 0 auto;
+    width: 100px;
+    height: 100px;
+    border-radius: 60px;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.user-name {
+    font-size: 25px;
+    font-weight: 300;
+    margin-bottom: 10px;
+}
+
+.user-status {
+    margin: 0 auto;
+    max-width: 350px;
+    font-size: 14px;
+    font-weight: 200;
+    margin-bottom: 10px;
+}
+
+.user-description {
+    margin: 0 auto;
+    max-width: 350px;
+    font-size: 16px;
+    font-weight: 200;
+    margin-bottom: 10px;
+
+}
+
+.read-more {
+    font-weight: 300;
+    color: var(--main);
+    cursor: pointer;
+}
+
+.contacts-list {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.contacts-link {
+    text-decoration: none;
+    font-size: 16px;
+    color: #505050;
+    font-weight: 300;
+}
+
+.contacts-item {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    gap: 5px;
+}
+
+.header-container{
+    margin-bottom: 10px;
+}
+
+.edit-user-btn{
+    border: none;
+    background: none;
+    color: var(--main);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+
+.edit-user-form{
+    margin-bottom: 50px;
+    flex-direction: column;
+    padding: 8px;
+    background-color: var(--cards);
+    border-radius: 24px;
+}
+
+.input-label{
+    flex-direction: column;
+}
+
+.input-date{
+    max-width: 125px;
+}
+
+.label-text{
+    margin-bottom: 7px;
+}
+
+.text-area{
+    font-size: 16px;
+    width: 100%;
+    min-height: 250px;
+}
+
+.message{
+    padding: 4px;
+    margin-bottom: 10px;
+    background-color: var(--light);
+    border-radius: 5px;
+}

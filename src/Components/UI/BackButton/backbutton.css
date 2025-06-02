@@ -1,0 +1,12 @@
+.back-button{
+    font-size: 32px;
+    font-weight: bold;
+    color: var(--main);
+    cursor: pointer;
+    line-height: 0;
+    transition: all 0.2s ease-in-out;
+}
+
+.back-button:hover{
+  color: var(--secondary);
+}

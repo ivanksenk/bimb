@@ -1,0 +1,46 @@
+.new-meeting-header{
+    margin-bottom: 10px;
+    background-color: var(--cards);
+    padding-bottom: 7px;
+    border-bottom: 1px solid var(--borders);
+
+}
+
+.new-meeting-heder-container{
+    gap: 15px;
+    align-items: center;
+}
+
+.new-meeting-form{
+    margin-bottom: 50px;
+    flex-direction: column;
+    padding: 8px;
+    background-color: var(--cards);
+    border-radius: 24px;
+}
+
+.input-label{
+
+    flex-direction: column;
+}
+
+.input-date{
+    max-width: 125px;
+}
+
+.label-text{
+    margin-bottom: 7px;
+}
+
+.text-area{
+    font-size: 16px;
+    width: 100%;
+    min-height: 250px;
+}
+
+.message{
+    padding: 4px;
+    margin-bottom: 10px;
+    background-color: var(--light);
+    border-radius: 5px;
+}

@@ -1,0 +1,101 @@
+:root {
+    --main: #1f4596;
+    --secondary: #2857bb;
+    --light:#D0E8FF;
+    --typo: #111111;
+    --background: #F5F5F5;
+    --borders: #e0e0e0;
+    --cards: #fff;
+    --text: #585858;
+    --green:#7CB82F;
+}
+
+body {
+    overflow-x: hidden;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+    background-color: var(--background);
+    box-sizing: border-box;
+    color: inherit;
+}
+
+.root {
+    width: 100%;
+}
+
+/*res*/
+h1,
+h2,
+h3,
+h4 {
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+.ul-res {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+
+.btn {
+    margin: 0;
+    padding: 8px;
+    color: #fff;
+    font-weight: bold;
+    background-color: var(--main);
+    cursor: pointer;
+    border: none;
+    border-radius: 8px;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn:hover {
+    background-color: var(--secondary);
+}
+
+a {
+    color: inherit;
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    margin: 0;
+    padding: 0;
+}
+
+.cont-relative{
+    position: relative;
+}
+
+/*global*/
+.flex {
+    display: flex;
+}
+
+.container {
+    padding-left: 4px;
+    padding-right: 4px;
+}
+
+.input {
+    padding: 4px;
+    font-size: 16px;
+    background-color: var(--background);
+    border: 1px solid var(--borders);
+    border-radius: 8px;
+    margin-bottom: 8px;
+}
+
+.mb50{
+    margin-bottom: 50px;
+}

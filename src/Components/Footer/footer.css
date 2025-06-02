@@ -1,0 +1,33 @@
+.footer{
+    padding-top: 5px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    height: 42px;
+    width: 100%;
+    background-color: var(--cards);
+    border-top: 1px solid var(--borders);
+}
+
+.footer-menu{
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+    height: 42px;
+}
+
+.menu-item{
+    font-size: 36px;
+    color: var(--typo);
+    transition: all .2s ease-in-out;
+}
+
+.menu-item:hover{
+    color: var(--main);
+}
+.menu-item:active{
+    color: var(--main);
+}
+.menu-item:focus{
+    color: var(--main);
+}

@@ -1,0 +1,41 @@
+.peoples-list {
+    margin-bottom: 50px;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.people-card {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    text-align: center;
+    background-color: var(--cards);
+    width: 48%;
+    border-radius: 22px;
+    border: 1px solid var(--borders);
+}
+
+.people-img {
+    margin: 0 auto;
+    margin-bottom: 10px;
+    width: 80px;
+    height: 80px;
+    border-radius: 80px;
+    border: 1px solid var(--borders);
+}
+
+.people-title {
+    margin-bottom: 10px;
+}
+
+.people-description {
+    margin-bottom: 10px;
+    color: var(--text);
+    font-size: 14px;
+}
+
+.people-link {
+    text-decoration: none;
+    font-weight: bold;
+    color: var(--main);
+}
