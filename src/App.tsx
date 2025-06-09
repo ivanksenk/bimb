@@ -20,6 +20,7 @@ function App() {
     try {
       if (window.Telegram.WebApp) {
         const tg = window.Telegram.WebApp;
+        tg.expand();
         setId(Number(tg.initDataUnsafe.user?.id))
       }
     } catch (error) {

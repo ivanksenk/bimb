@@ -11,6 +11,7 @@ interface PeopleCardProps {
 }
 
 export const PeopleCard: React.FC<PeopleCardProps> = ({avatar,firstName,lastName,tgId,status}) => {
+    console.log(avatar);
     return (
         <div className="people-card-wrapp">
             <img className="user-avatar" src={avatar ? `${API_URL}/uploads/${avatar}` : smallLogo} />

@@ -44,3 +44,7 @@
     background-color: var(--light);
     border-radius: 5px;
 }
+
+.time-wrapp{
+    gap: 16px;
+}

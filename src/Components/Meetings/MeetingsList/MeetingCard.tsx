@@ -10,17 +10,18 @@ interface MeetingCardProps {
     title: string;
     description?: string;
     date: string;
+    time: string;
     partipiants?: any[]
 }
 
-export const MeetingCard: React.FC<MeetingCardProps> = ({ title, description, date, id, partipiants }) => {
+export const MeetingCard: React.FC<MeetingCardProps> = ({ title, description, date, id, partipiants, time }) => {
     const [descr, setDescr] = useState(description);
     const [show, setShow] = useState(false);
     const [load, setLoad] = useState(false);
-    const editDate: String[] = date.split('.');
-    const newDate = editDate[0].split('T');
-    const days = newDate[0].split('-');
-    const hours = newDate[1].split(':');
+    console.log(date)
+    let days: any = date.split('T');
+    days = days[0].split('-');
+
     const userId = localStorage.getItem('userId');
     let text = '';
     if (descr && descr.length > 200) {
@@ -55,8 +56,8 @@ export const MeetingCard: React.FC<MeetingCardProps> = ({ title, description, da
                 }
             })
                 .then(res => {
-                    if(res)
-                    queryClient.invalidateQueries({ queryKey: ['meetings'] });
+                    if (res)
+                        queryClient.invalidateQueries({ queryKey: ['meetings'] });
                     setLoad(false);
                 })
                 .catch(err => console.log(err))
@@ -68,8 +69,8 @@ export const MeetingCard: React.FC<MeetingCardProps> = ({ title, description, da
         <div className="meeting-card">
             <div className="card-header flex">
                 <div className="meeting-date">
-                    <span className="meeting-1">{days[2]}.{days[1]}</span>
-                    <span className="meeting-2">{Number(hours[0]) + 5}:{hours[1]}</span>
+                    <span className="meeting-1">{Number(days[2])+1}.{days[1]}</span>
+                    <span className="meeting-2">{time}</span>
                 </div>
                 <div className="btn-wrapp">
                     {partipiants?.filter(item => item.user_id === userId).length ?
