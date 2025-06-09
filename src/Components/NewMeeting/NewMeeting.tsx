@@ -1,9 +1,9 @@
 import './newMeeting.css'
 import { BackButton } from "../UI/BackButton/BackButton";
 import { FormEvent, useEffect, useState } from 'react';
-import DatePicker from "react-datepicker";
+
 import "react-datepicker/dist/react-datepicker.css";
-import { ru } from 'date-fns/locale';
+
 import { NewMeetingInterface } from '../../Interfaces/Meeting.interface';
 import { newMeetingSave } from '../../API/meetings/meetings.api';
 import { useNavigate } from 'react-router-dom';
@@ -15,7 +15,10 @@ interface NewMeetingProps {
 }
 
 export const NewMeeting: React.FC<NewMeetingProps> = () => {
-    const [startDate, setStartDate] = useState<Date | null>(new Date());
+    const hoursArray = ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23']
+    const [date, setDate] = useState<string>('');
+    const [hour, setHour] = useState('00');
+    const [minuts, setMinuts] = useState('00');
     const [loader, setLoader] = useState(false);
     const [message, setMessage] = useState('');
 
@@ -25,6 +28,7 @@ export const NewMeeting: React.FC<NewMeetingProps> = () => {
     const navigate = useNavigate();
 
     const organizerId = localStorage.getItem('userId');
+
     useEffect(() => {
         if (!organizerId) {
             navigate('/');
@@ -35,21 +39,24 @@ export const NewMeeting: React.FC<NewMeetingProps> = () => {
 
     const createNewMeeting = (e: FormEvent) => {
         e.preventDefault();
-        setLoader(true);
-        if (startDate && typeof organizerId === 'string') {
-            const saveDate = startDate.toISOString().slice(0, 19).replace('T', ' ');
+        // setLoader(true);
+
+        if (organizerId) {
             const newMeeting: NewMeetingInterface = {
                 title: title,
                 description: description,
-                date: saveDate,
+                date: date,
+                time: `${hour}:${minuts}`,
                 organizerId: organizerId
             }
+            console.log(newMeeting);
+
             newMeetingSave(newMeeting)
                 .then(res => {
                     if (res.data) {
                         setMessage(res.data.message);
                         setLoader(false);
-                        setTimeout(()=>{navigate('/meetings')},1000)
+                        setTimeout(() => { navigate('/meetings') }, 1000)
                     }
                 })
                 .catch(err => {
@@ -57,8 +64,13 @@ export const NewMeeting: React.FC<NewMeetingProps> = () => {
                     setMessage('Произошла ошибка, попробуйте позднее...');
                     setLoader(false);
                 })
-            console.log(newMeeting);
+
         }
+
+
+
+
+
     }
 
     return (
@@ -92,18 +104,23 @@ export const NewMeeting: React.FC<NewMeetingProps> = () => {
                     </label>
                     <label className='input-label flex'>
                         <span className='label-text'>Выберите дату и время*</span>
-                        <DatePicker
-                            className='input input-date'
-                            selected={startDate}
-                            locale={ru}
-                            onChange={(date) => setStartDate(date)}
-                            minDate={new Date()}
-                            showTimeSelect
-                            timeFormat="HH:mm"
-                            timeIntervals={15} // Шаг времени (15 минут)
-                            dateFormat="dd.MM.yyyy HH:mm"
-                            placeholderText="Выберите дату и время"
-                        />
+                        <div className="flex time-wrapp">
+                            <input type='date' className='input' onChange={e => setDate(e.target.value)} />
+                            <select className='input' onChange={e => setHour(e.target.value)}>
+                                {hoursArray.map(hour => {
+                                    return (
+                                        <option key={hour} value={hour}>{hour}</option>
+                                    )
+                                })}
+                            </select>
+                            <select className='input' onChange={e => setMinuts(e.target.value)}>
+                                <option value={'00'}>00</option>
+                                <option value={'15'}>15</option>
+                                <option value={'30'}>30</option>
+                                <option value={'45'}>45</option>
+                            </select>
+                        </div>
+
                     </label>
                     {message ? <span className='message'>{message}</span> : null}
                     {loader ?
@@ -114,7 +131,7 @@ export const NewMeeting: React.FC<NewMeetingProps> = () => {
 
                 </form>
             </div>
-            <Footer/>
+            <Footer />
         </>
     );
 };

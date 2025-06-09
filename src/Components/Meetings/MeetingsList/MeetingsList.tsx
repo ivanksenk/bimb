@@ -5,6 +5,7 @@ import { queryClient } from "../../../API/queryClient";
 import { getAllMeetings } from "../../../API/meetings/meetings.api";
 import { Footer } from "../../Footer/Footer";
 import { useState } from "react";
+import { AddButton } from "../../UI/AddButton/AddButton";
 
 
 
@@ -58,20 +59,20 @@ export const MeetingsList: React.FC<MeetingsListProps> = () => {
         const cards = data.data;
         if (Array.isArray(cards)) {
             const iParts = cards.filter(item => item.participants.length);
-            let iFollow: any = [];   
+            let iFollow: any = [];
             for (let i = 0; i < iParts.length; i++) {
                 const temp = iParts[i].participants;
                 temp.map((card: any) => {
                     if (card.user_id === userId) {
                         iFollow.push(iParts[i]);
                     }
-                   
+
                 })
             }
-            const iNoFollow:any[] = cards.filter(el_A => !iFollow.includes(el_A))
+            const iNoFollow: any[] = cards.filter(el_A => !iFollow.includes(el_A))
             return (
                 <>
-                    <div className="container">
+                    <div className="container cont-relative">
                         <div className="meetings-filter">
                             <ul className="ul-res flex button-container">
                                 <li><button onClick={handleAll} className={all ? 'filter-button filter-button-active' : 'filter-button'}>Все</button></li>
@@ -89,6 +90,7 @@ export const MeetingsList: React.FC<MeetingsListProps> = () => {
                                                 title={card.title}
                                                 description={card.description}
                                                 date={card.date}
+                                                time={card.time}
                                                 partipiants={card.participants}
                                             />
                                         </li>
@@ -101,25 +103,26 @@ export const MeetingsList: React.FC<MeetingsListProps> = () => {
                         {follow ?
                             <ul className=" ul-res flex meeting-items" style={{ flexDirection: 'column' }}>
                                 {iFollow.length ?
-                                <>
-                                 {iFollow.map((cardFollow: any) => {
-                                    return (
-                                        <li className="meeting-item" key={cardFollow.id}>
-                                            <MeetingCard
-                                                id={cardFollow.id}
-                                                title={cardFollow.title}
-                                                description={cardFollow.description}
-                                                date={cardFollow.date}
-                                                partipiants={cardFollow.participants}
-                                            />
-                                        </li>
-                                    )
-                                })}
-                                </>
-                                :    
-                                <p>Тут пусто...</p>
-                            }
-                               
+                                    <>
+                                        {iFollow.map((cardFollow: any) => {
+                                            return (
+                                                <li className="meeting-item" key={cardFollow.id}>
+                                                    <MeetingCard
+                                                        id={cardFollow.id}
+                                                        title={cardFollow.title}
+                                                        description={cardFollow.description}
+                                                        date={cardFollow.date}
+                                                        time={cardFollow.time}
+                                                        partipiants={cardFollow.participants}
+                                                    />
+                                                </li>
+                                            )
+                                        })}
+                                    </>
+                                    :
+                                    <p>Тут пусто...</p>
+                                }
+
                             </ul>
                             :
                             null
@@ -127,29 +130,30 @@ export const MeetingsList: React.FC<MeetingsListProps> = () => {
                         {noFollow ?
                             <ul className=" ul-res flex meeting-items" style={{ flexDirection: 'column' }}>
                                 {iNoFollow.length ?
-                                <>
-                                {iNoFollow.map((cardFollow: any) => {
-                                    return (
-                                        <li className="meeting-item" key={cardFollow.id}>
-                                            <MeetingCard
-                                                id={cardFollow.id}
-                                                title={cardFollow.title}
-                                                description={cardFollow.description}
-                                                date={cardFollow.date}
-                                                partipiants={cardFollow.participants}
-                                            />
-                                        </li>
-                                    )
-                                })}
-                                </>
-                                :
-                                <p>Тут пусто...</p>
+                                    <>
+                                        {iNoFollow.map((cardFollow: any) => {
+                                            return (
+                                                <li className="meeting-item" key={cardFollow.id}>
+                                                    <MeetingCard
+                                                        id={cardFollow.id}
+                                                        title={cardFollow.title}
+                                                        description={cardFollow.description}
+                                                        time={cardFollow.time}
+                                                        date={cardFollow.date}
+                                                        partipiants={cardFollow.participants}
+                                                    />
+                                                </li>
+                                            )
+                                        })}
+                                    </>
+                                    :
+                                    <p>Тут пусто...</p>
                                 }
                             </ul>
                             :
                             null
                         }
-
+                        <AddButton link="/meetings/new"/>
                     </div>
                     <Footer />
                 </>

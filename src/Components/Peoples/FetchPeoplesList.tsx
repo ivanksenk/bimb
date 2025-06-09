@@ -43,11 +43,6 @@ export const FetchPeoplesList: React.FC<FetchPeoplesListProps> = () => {
                             />
                             </li>
                     })}
-                    <li className='people-card'><PeopleCard /></li>
-                    <li className='people-card'><PeopleCard /></li>
-                    <li className='people-card'><PeopleCard /></li>
-                    <li className='people-card'><PeopleCard /></li>
-                    <li className='people-card'><PeopleCard /></li>
                 </ul>
             </div>
             <Footer />

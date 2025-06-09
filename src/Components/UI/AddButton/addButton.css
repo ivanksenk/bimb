@@ -1,0 +1,7 @@
+.add__button{
+    color: var(--main);
+    font-size: 48px;
+    position: fixed;
+    bottom: 40px;
+    right: 0;
+}
